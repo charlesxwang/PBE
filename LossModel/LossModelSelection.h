@@ -1,5 +1,5 @@
-#ifndef LOSSMODELCONTAINER_H
-#define LOSSMODELCONTAINER_H
+#ifndef LOSS_MODEL_SELECTION_H
+#define LOSS_MODEL_SELECTION_H
 
 /* *****************************************************************************
 Copyright (c) 2016-2017, The Regents of the University of California (Regents).
@@ -49,21 +49,20 @@ class QVBoxLayout;
 
 class RandomVariablesContainer;
 
-class LossModelContainer : public SimCenterAppWidget
+class LossModelSelection : public SimCenterAppWidget
 {
     Q_OBJECT
 public:
-    explicit LossModelContainer(
-      RandomVariablesContainer *theRV_IW, QWidget *parent = 0);
+    explicit LossModelSelection(RandomVariablesContainer *theRV_IW, QWidget *parent = 0);
 
-    ~LossModelContainer();
+    ~LossModelSelection();
 
     QString getFragilityFolder();
     QString getPopulationFile();
 
     bool inputFromJSON(QJsonObject &rvObject);
     bool outputToJSON(QJsonObject &rvObject);
-    bool outputAppDataToJSON(QJsonObject &rvObject);
+    bool outputAppDataToJSON(QJsonObject &rvObject, QJsonObject &lossModelObject);
     bool inputAppDataFromJSON(QJsonObject &rvObject);
     bool copyFiles(QString &dirName);
 
@@ -86,4 +85,4 @@ private:
     bool selectionChangeOK;
 };
 
-#endif // LOSSMODELCONTAINER_H
+#endif // LOSS_MODEL_SELECTION_H
